@@ -57,6 +57,7 @@ public class Main {
                 Arrays.toString(array),
                 Arrays.toString(getIndexesOfDublicateNumberInArray(array))
         );
+        //test
     }
 
     private static int[] getIndexesOfDublicateNumberInArray(int[] array) {
