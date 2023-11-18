@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -51,16 +49,57 @@ public class Main {
         System.out.println("\n");
         System.out.println("Задание №5");
 
-        array = new int[]{-1,2,4,-3,3,3,3,6,10,37};
+        array = new int[]{-1,2,4,3,3,3,3,6,10,37};
         System.out.printf(
-                "В массиве %s индексы дубликатов равны %s",
+                "В отсортированном массиве %s индексы дубликатов равны %s",
                 Arrays.toString(array),
-                Arrays.toString(getIndexesOfDublicateNumberInArray(array))
+                Arrays.toString(getIndexesOfDublicateNumberInSortedArray(array))
         );
-        //test
+
+        System.out.println("\n");
+        System.out.println("Задание №6");
+
+        Integer[] arrayInBox = new Integer[]{-1,3,4,-3,3,0,3,6,10,3};
+        System.out.printf(
+                "В НЕотсортированном массиве %s индексы дубликатов равны %s",
+                Arrays.toString(arrayInBox),
+                Arrays.toString(getIndexesOfDublicateNumberInUnsortedArray(arrayInBox))
+        );
+
+        System.out.println("\n");
+        System.out.println("Задание №7");
+
+        arrayInBox = new Integer[]{-1,3,-1,-3,3,0,-3,6,0,5,5};
+        System.out.printf(
+                "В НЕотсортированном массиве дубликатов %s уникальный элемент равен %s",
+                Arrays.toString(arrayInBox),
+                getUniqueNumberFromUnsortedArray(arrayInBox)
+        );
     }
 
-    private static int[] getIndexesOfDublicateNumberInArray(int[] array) {
+    private static Integer getUniqueNumberFromUnsortedArray(Integer[] array) {
+        List<Integer> arrayAsList = Arrays.asList(array);
+        return arrayAsList.stream()
+                .filter(i -> Collections.frequency(arrayAsList, i) == 1)
+                .findFirst().orElse(0);
+    }
+
+    private static Integer[] getIndexesOfDublicateNumberInUnsortedArray(Integer[] array) {
+        List<Integer> arrayAsList = Arrays.asList(array);
+        int dublicate = arrayAsList.stream()
+                .filter(i -> Collections.frequency(arrayAsList, i) > 1)
+                .findFirst().orElse(0);
+        List<Integer> indexes = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            if (dublicate == array[i]) {
+                indexes.add(i);
+            }
+        }
+
+        return indexes.toArray(new Integer[0]);
+    }
+
+    private static int[] getIndexesOfDublicateNumberInSortedArray(int[] array) {
         if (array.length < 2) {
             return new int[0];
         }
@@ -78,9 +117,10 @@ public class Main {
                 bufferNumber = array[i];
             }
         }
+        index--;
         int[] result = new int[count];
-        for (int i = 1; i <= count; i++) {
-            result[i-1] = index++;
+        for (int i = 0; i < count; i++) {
+            result[i] = index++;
         }
 
         return result;
