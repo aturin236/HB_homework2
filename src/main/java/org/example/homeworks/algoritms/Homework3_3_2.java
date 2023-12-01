@@ -1,4 +1,4 @@
-package org.example;
+package org.example.homeworks.algoritms;
 
 public class Homework3_3_2 {
     public static final byte INDEX = 0;
