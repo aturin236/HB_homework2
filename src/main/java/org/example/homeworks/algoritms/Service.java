@@ -5,6 +5,10 @@ public class Service {
         return (int) (Math.random() * (rightBorder + 1));
     }
 
+    public static int[] getRandomArray(int size, int rightBorder) {
+        return getRandomArray(size, rightBorder, false);
+    }
+
     public static int[] getRandomArray(int size, int rightBorder, boolean unique) {
         int[] result = new int[size];
         for (int i = 0; i <= size-1; i++) {
