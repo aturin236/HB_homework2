@@ -1,11 +1,11 @@
-package org.example;
+package org.example.homeworks.algoritms;
 
 public class Service {
-    static int getRandomInt(int rightBorder) {
+    public static int getRandomInt(int rightBorder) {
         return (int) (Math.random() * (rightBorder + 1));
     }
 
-    static int[] getRandomArray(int size, int rightBorder, boolean unique) {
+    public static int[] getRandomArray(int size, int rightBorder, boolean unique) {
         int[] result = new int[size];
         for (int i = 0; i <= size-1; i++) {
             if (unique) {
@@ -24,7 +24,7 @@ public class Service {
         return result;
     }
 
-    static int[][] getRandom2DimArray(int size) {
+    public static int[][] getRandom2DimArray(int size) {
         int[][] result = new int[size][];
         for (int i = 0; i <= size-1; i++) {
             result[i] = getRandomArray(
@@ -36,7 +36,7 @@ public class Service {
         return result;
     }
 
-    static boolean isIncludedInTheArray(int x, int[] array) {
+    public static boolean isIncludedInTheArray(int x, int[] array) {
         return indexNumberIncludedInTheArray(x, array) >= 0;
     }
 

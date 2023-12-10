@@ -1,4 +1,4 @@
-package org.example;
+package org.example.homeworks.algoritms;
 
 import java.util.Arrays;
 
